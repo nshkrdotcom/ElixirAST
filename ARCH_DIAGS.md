@@ -5,27 +5,27 @@
 ```mermaid
 graph TB
     subgraph "Input Layer"
-        SOURCE[Source Code (String)]
-        AST_INPUT[Raw AST (Optional)]
-        CONFIG_BUILDER[Instrumentation Config (via Builder API)]
+        SOURCE["Source Code (String)"]
+        AST_INPUT["Raw AST (Optional)"]
+        CONFIG_BUILDER["Instrumentation Config (via Builder API)"]
     end
     
     subgraph "ElixirAST Core Engine"
-        PARSER[Core.Parser (Source -> AST, Node ID Assignment)]
-        ANALYZER[Core.Analyzer (Pattern Detection, Target Identification)]
-        TRANSFORMER[Core.Transformer (AST Traversal & Modification)]
-        INJECTOR[Core.Injector (Instrumentation Code Generation)]
+        PARSER["Core.Parser (Source -> AST, Node ID Assignment)"]
+        ANALYZER["Core.Analyzer (Pattern Detection, Target Identification)"]
+        TRANSFORMER["Core.Transformer (AST Traversal & Modification)"]
+        INJECTOR["Core.Injector (Instrumentation Code Generation)"]
     end
     
     subgraph "Output & Runtime Support"
-        INSTRUMENTED_AST[Instrumented AST (Output of Transform)]
-        CONSOLE_LOGGER[Output.Console (Runtime Logging Utilities)]
+        INSTRUMENTED_AST["Instrumented AST (Output of Transform)"]
+        CONSOLE_LOGGER["Output.Console (Runtime Logging Utilities)"]
     end
     
     subgraph "API Layer (ElixirAST Module)"
         PUBLIC_API[ElixirAST Public Functions]
-        BUILDER_MODULE[ElixirAST.Builder (Fluent API State)]
-        PATTERN_MODULE[ElixirAST.Patterns (Pattern Definitions)]
+        BUILDER_MODULE["ElixirAST.Builder (Fluent API State)"]
+        PATTERN_MODULE["ElixirAST.Patterns (Pattern Definitions)"]
     end
     
     %% Input flow
@@ -50,10 +50,10 @@ graph TB
     INSTRUMENTED_AST -.->|Instrumented code calls| CONSOLE_LOGGER
     
     %% Styling
-    classDef inputClass fill:#e1f5fe,stroke:#333,stroke-width:2px
-    classDef coreClass fill:#c8e6c9,stroke:#333,stroke-width:2px
-    classDef outputClass fill:#fff3e0,stroke:#333,stroke-width:2px
-    classDef apiClass fill:#f3e5f5,stroke:#333,stroke-width:2px
+    classDef inputClass fill:#e1f5fe,stroke:#333,stroke-width:2px,color:#000
+    classDef coreClass fill:#c8e6c9,stroke:#333,stroke-width:2px,color:#000
+    classDef outputClass fill:#fff3e0,stroke:#333,stroke-width:2px,color:#000
+    classDef apiClass fill:#f3e5f5,stroke:#333,stroke-width:2px,color:#000
     
     class SOURCE,AST_INPUT,CONFIG_BUILDER inputClass
     class PARSER,ANALYZER,TRANSFORMER,INJECTOR coreClass
@@ -117,6 +117,6 @@ graph TD
     F5 -- Uses --> F3
     F5 -- Uses --> F4
 
-    classDef feature fill:#lightgrey,stroke:#333,stroke-width:2px;
+    classDef feature fill:#lightgrey,stroke:#333,stroke-width:2px,color:#000;
     class F1,F2,F3,F4,F5 feature;
 ```
