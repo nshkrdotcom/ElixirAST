@@ -1,4 +1,5 @@
 defmodule ElixirAST.Core.Parser do
+
   @moduledoc """
   Internal. AST parsing with unique node identification.
   Implements F1 from PRD.
@@ -85,4 +86,19 @@ defmodule ElixirAST.Core.Parser do
       end
     "ast_id_#{node_type_indicator}_#{sequential_id}"
   end
+
+  def parse(source_code) do
+    case Code.string_to_quoted(source_code) do
+      {:ok, ast} ->
+        # Rudimentary node ID assignment for now - just adds one to the top-level
+        # More sophisticated ID assignment will be needed later.
+                metadata = elem(ast, 1)
+                new_metadata = Keyword.put(metadata, :elixir_ast_node_id, "node_0")
+                ast_with_id = put_elem(ast, 1, new_metadata)
+        {:ok, ast_with_id}
+      {:error, _reason} = error ->
+        error
+    end
+  end
+
 end
