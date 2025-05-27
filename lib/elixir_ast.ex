@@ -1,4 +1,7 @@
 defmodule ElixirAST do
+  @moduledoc """
+  ElixirAST: Compile-Time AST Instrumentation Engine (Placeholder)
+  """
   alias ElixirAST.Builder
   alias ElixirAST.Core.Parser
   alias ElixirAST.Core.Transformer # Added

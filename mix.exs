@@ -11,6 +11,7 @@ defmodule ElixirAST.MixProject do
     ]
   end
 
+  # Run "mix help compile.app" to learn about applications.
   def application do
     [
       extra_applications: [:logger]
@@ -18,6 +19,8 @@ defmodule ElixirAST.MixProject do
   end
 
   defp deps do
-    []
+    [
+      {:ex_unit, "~> 1.12", only: :test}
+    ]
   end
 end
